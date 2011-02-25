@@ -1,0 +1,52 @@
+Arquivo para integração com o VirtueMart
+Script com a finalidade de integrar o método de pagamento cobredireto no virtuemart
+
+@package CobreDireto
+@author ldmotta <ldmotta@visie.com.br>
+@date 22/04/2010
+@version 0.0.1
+@abstract
+  
+INSTALAÇÃO
+
+Para a instalação, estamos supondo que você já tenha instalado e funcionando o joomla com virtuemart.
+
+- Extraia todo o conteúdo do pacote com a biblioteca, na raiz do seu site, no mesmo nível da pasta "administrator"
+  da sua instalação do joomla.
+  
+- Durante a extração, o sistema poderá pedir para mesclar e/ou substituir pastas e arquivos, clique em sim para todos.
+
+CONFIGURAÇÃO
+
+- Certifique-se de que o arquivo '/administrator/components/com_virtuemart/classes/payment/ps_cobredireto.cfg.php' tenha permissão de leitura e escrita (chmod 666). (Visite http://www.treinalinux.com.br/dvd/degraca/chmod/)
+
+- Abra o painel administrativo da sua instalação joomla. (O endereço pode ser algo como 'http://seu_dominio.com.br/administrator/index.php')
+
+- Clique no menu superior 'Componentes -> VirtueMart'
+
+- No menu à esquerda, clique na aba 'Store' e depois 'List Payment Methods'
+
+- Clique no botão 'New' para adicionar nova forma de pagamento
+
+- Na aba Payment Method Form preencha os seguintes campos como segue:
+  Payment Method Name: CobreDireto
+  Code: CD
+  Payment class name: ps_cobredireto
+  Payment method type: Marque a opção 'HTML-Form based (e.g. PayPal)'
+  
+- Clique no botão 'Apply' para aplicar as configurações
+
+- Agora clique na aba 'Configurações' e preencha os campos como segue:
+  Ambiênte: Teste
+  Código da loja junto ao CobreDireto: Seu código de loja no cobredireto ex.: abcd22
+  Usuario no CobreDireto: Seu usuário no cobre direto ex.: abcd22
+  Senha no CobreDireto: Sua senha no cobredireto ex.: juquinha22
+  URL de Retorno para o Bell e o Probe: Url onde está o arquivo de retorto ex.: http://seu_dominio.com.br/administrator/components/com_virtuemart/classes/payment/cobredireto/retorno_cobredireto.php
+  
+- Inclusão do Payment Extra Info
+  Copie e cole todo o conteúdo do arquivo 'payment_method_code.txt' que está no diretório '/administrator/components/com_virtuemart/classes/payment/cobredireto/', para a caixa de texto 'Payment Extra Info'.
+  
+- Clique no botão 'Save' ou 'Apply' para finalizar.
+
+- Done!
+  

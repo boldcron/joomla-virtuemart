@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://services.webservice.bpag2.boldcron.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://services.webservice.bpag2.boldcron.com" xmlns:intf="http://services.webservice.bpag2.boldcron.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://services.webservice.bpag2.boldcron.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="doService">
+    <complexType>
+     <sequence>
+      <element name="version" type="xsd:string"/>
+      <element name="action" type="xsd:string"/>
+      <element name="merchant" type="xsd:string"/>
+      <element name="user" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+      <element name="data" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="doServiceResponse">
+    <complexType>
+     <sequence>
+      <element name="doServiceReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="doServiceRequest">
+
+      <wsdl:part element="impl:doService" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="doServiceResponse">
+
+      <wsdl:part element="impl:doServiceResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="BPagWS">
+
+      <wsdl:operation name="doService">
+
+         <wsdl:input message="impl:doServiceRequest" name="doServiceRequest"/>
+
+         <wsdl:output message="impl:doServiceResponse" name="doServiceResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="BPagWSSoapBinding" type="impl:BPagWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="doService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="doServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="doServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="BPagWSService">
+
+      <wsdl:port binding="impl:BPagWSSoapBinding" name="BPagWS">
+
+         <wsdlsoap:address location="https://psp.cobredireto.com.br/bpag2/services/BPagWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,67 @@
+<?php
+ /**
+  * Arquivo para integração com o VirtueMart
+  *
+  * Script com a finalidade de integrar o método de pagamento cobredireto no virtuemart
+  *
+  * @package CobreDireto
+  * @author ldmotta <ldmotta@visie.com.br>
+  * @date 22/04/2010
+  * @version 0.0.1
+  * @abstract
+  */
+include (JPATH_COMPONENT_ADMINISTRATOR.'/classes/payment/cobredireto/biblioteca/pagamento.php');
+include (JPATH_COMPONENT_ADMINISTRATOR.'/classes/payment/cobredireto/biblioteca/tratadados.php');
+
+$db1 = new ps_DB();
+$db1->query("SELECT * FROM #__vm_order_item WHERE order_id = '".$db->f('order_id')."'");
+
+$pg=new Pg($db->f("order_id"));
+
+list($telefone_ddd, $telefone) = trataTelefone($user->phone_1);
+
+$data = array (
+    'primeiro_nome' => $user->first_name,
+    'meio_nome'     => $user->middle_name,
+    'ultimo_nome'   => $user->last_name,
+    'email'         => $user->user_email,
+    'documento'     => '',
+    'tel_casa'      => array ('area' => $telefone_ddd, 'numero' => $telefone ),
+    'cep'           => $user->zip,
+);
+$pg->endereco($data, 'CONSUMIDOR');
+
+$pedido = array();
+
+$extra = array (
+    'Outras taxas' => $taxa = $db->f('order_shipping_tax'),
+    //'Descontos'    => ($db->f('order_discount') + $db->f('coupon_discount'))
+);
+
+foreach($extra as $k => $v){
+    $pedido[] = array(
+        'descricao'  => $k,
+        'valor'      => $v,
+        'quantidade' => '1',
+        'id'         => $db1->f('order_item_sku'),
+    );
+}
+
+while ($db1->next_record()) {
+  $pedido[] =  array(
+    'descricao'  => strip_tags($db1->f('order_item_name') . ' - ' . ($db1->f('product_attribute'))),
+    'valor'      => $db1->f('product_item_price'),
+    'quantidade' => $db1->f('product_quantity'),
+    'id'         => $db1->f('order_item_sku'),
+  );
+}
+
+$order_frete = number_format($db->f('order_shipping'), 2, '', '');
+$pg->frete($order_frete);
+
+$pg->adicionar($pedido);
+
+// Cria a compra junto ao CobreDireto e redireciona o usuário
+$pg->pagar();
+
+?>
