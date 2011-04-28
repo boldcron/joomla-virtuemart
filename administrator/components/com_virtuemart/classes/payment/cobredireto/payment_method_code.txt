@@ -21,7 +21,10 @@ $pg=new Pg($db->f("order_id"));
 list($telefone_ddd, $telefone) = trataTelefone($user->phone_1);
 $siglas=array('AGO'=> 'AO', 'DZA'=> 'DZ', 'EGY'=> 'EG', 'BGD'=> 'BD', 'NER'=> 'NE', 'TKL'=> 'TK', 'NAM'=> 'NA', 'BGR'=> 'BG', 'BOL'=> 'BO', 'GHA'=> 'GH', 'CCK'=> 'CC', 'PAK'=> 'PK', 'CPV'=> 'CV', 'JOR'=> 'JO', 'LBR'=> 'LR', 'LBY'=> 'LY', 'MYS'=> 'MY', 'DOM'=> 'DO', 'PRI'=> 'PR', 'MYT'=> 'YT', 'PRK'=> 'KP', 'PSE'=> 'PS', 'TZA'=> 'TZ', 'BWA'=> 'BW', 'KHM'=> 'KH', 'TTO'=> 'TT', 'PRY'=> 'PY', 'HKG'=> 'HK', 'SAU'=> 'SA', 'LBN'=> 'LB', 'SVN'=> 'SI', 'BFA'=> 'BF', 'SVK'=> 'SK', 'MRT'=> 'MR', 'HRV'=> 'HR', 'CHL'=> 'CL', 'CHN'=> 'CN', 'SMR'=> 'SM', 'SLE'=> 'SL', 'JAM'=> 'JM', 'GIB'=> 'GI', 'DJI'=> 'DJ', 'GIN'=> 'GN', 'FIN'=> 'FI', 'URY'=> 'UY', 'THA'=> 'TH', 'STP'=> 'ST', 'SYC'=> 'SC', 'NPL'=> 'NP', 'CXR'=> 'CX', 'LAO'=> 'LA', 'YEM'=> 'YE', 'PHL'=> 'PH', 'ZAF'=> 'ZA', 'KIR'=> 'KI', 'BVT'=> 'BV', 'TGO'=> 'TG', 'VIR'=> 'VI', 'SYR'=> 'SY', 'MAC'=> 'MO', 'LIE'=> 'LI', 'NIC'=> 'NI', 'MLT'=> 'MT', 'KAZ'=> 'KZ', 'COK'=> 'CK', 'MNG'=> 'MN', 'PYF'=> 'PF', 'NIU'=> 'NU', 'DMA'=> 'DM', 'BEN'=> 'BJ', 'GUF'=> 'GF', 'BEL'=> 'BE', 'MSR'=> 'MS', 'DEU'=> 'DE', 'GUM'=> 'GU', 'LKA'=> 'LK', 'FLK'=> 'FK', 'GBR'=> 'GB', 'GUY'=> 'GY', 'CRI'=> 'CR', 'CMR'=> 'CM', 'PCN'=> 'PN', 'MAR'=> 'MA', 'ROM'=> 'RO', 'MNP'=> 'MP', 'UMI'=> 'UM', 'HUN'=> 'HU', 'TKM'=> 'TM', 'SUR'=> 'SR', 'NLD'=> 'NL', 'BMU'=> 'BM', 'HMD'=> 'HM', 'TCD'=> 'TD', 'GEO'=> 'GE', 'MNE'=> 'ME', 'TCA'=> 'TC', 'MHL'=> 'MH', 'MTQ'=> 'MQ', 'BLZ'=> 'BZ', 'NFK'=> 'NF', 'MMR'=> 'MM', 'AFG'=> 'AF', 'BDI'=> 'BI', 'VGB'=> 'VG', 'BLR'=> 'BY', 'BLM'=> 'BL', 'GRD'=> 'GD', 'GRC'=> 'GR', 'VAT'=> 'VA', 'LSO'=> 'LS', 'GRL'=> 'GL', 'SHN'=> 'SH', 'AND'=> 'AD', 'MOZ'=> 'MZ', 'TJK'=> 'TJ', 'HTI'=> 'HT', 'MEX'=> 'MX', 'ANT'=> 'AN', 'ZWE'=> 'ZW', 'LCA'=> 'LC', 'IND'=> 'IN', 'LVA'=> 'LV', 'BTN'=> 'BT', 'VCT'=> 'VC', 'VNM'=> 'VN', 'NOR'=> 'NO', 'CZE'=> 'CZ', 'ATF'=> 'TF', 'ATG'=> 'AG', 'FJI'=> 'FJ', 'IOT'=> 'IO', 'HND'=> 'HN', 'MUS'=> 'MU', 'ATA'=> 'AQ', 'LUX'=> 'LU', 'ISR'=> 'IL', 'FSM'=> 'FM', 'PER'=> 'PE', 'REU'=> 'RE', 'IDN'=> 'ID', 'VUT'=> 'VU', 'MKD'=> 'MK', 'COD'=> 'CD', 'COG'=> 'CG', 'ISL'=> 'IS', 'GLP'=> 'GP', 'ETH'=> 'ET', 'COM'=> 'KM', 'COL'=> 'CO', 'NGA'=> 'NG', 'TWN'=> 'TW', 'PRT'=> 'PT', 'MDA'=> 'MD', 'GGY'=> 'G', 'MDG'=> 'MG', 'ECU'=> 'EC', 'SEN'=> 'SN', 'ESH'=> 'EH', 'MDV'=> 'MV', 'ASM'=> 'AS', 'SPM'=> 'PM', 'SRB'=> 'RS', 'FRA'=> 'FR', 'LTU'=> 'LT', 'RWA'=> 'RW', 'ZMB'=> 'ZM', 'GMB'=> 'GM', 'WLF'=> 'WF', 'JEY'=> 'JE', 'FRO'=> 'FO', 'GTM'=> 'GT', 'DNK'=> 'DK', 'IMN'=> 'IM', 'MAF'=> 'MF', 'AUS'=> 'AU', 'AUT'=> 'AT', 'SJM'=> 'SJ', 'VEN'=> 'VE', 'PLW'=> 'PW', 'KEN'=> 'KE', 'TUR'=> 'TR', 'ALB'=> 'AL', 'OMN'=> 'OM', 'TUV'=> 'TV', 'ALA'=> 'AX', 'BRN'=> 'BN', 'TUN'=> 'TN', 'RUS'=> 'RU', 'BRB'=> 'BB', 'BRA'=> 'BR', 'CIV'=> 'CI', 'GNQ'=> 'GQ', 'USA'=> 'US', 'QAT'=> 'QA', 'WSM'=> 'WS', 'AZE'=> 'AZ ', 'GNB'=> 'GW', 'SWZ'=> 'SZ', 'TON'=> 'TO', 'CAN'=> 'CA', 'UKR'=> 'UA', 'KOR'=> 'KR', 'AIA'=> 'AI', 'ERI'=> 'ER', 'CHE'=> 'CH', 'CYP'=> 'CY', 'BIH'=> 'BA', 'SGP'=> 'SG', 'SGS'=> 'GS', 'SOM'=> 'SO', 'TMP'=> 'TP', 'CAF'=> 'CF', 'POL'=> 'PL', 'KWT'=> 'KW', 'GAB'=> 'GA', 'CYM'=> 'KY', 'EST'=> 'EE', 'MWI'=> 'MW', 'ESP'=> 'ES', 'IRQ'=> 'IQ', 'SLV'=> 'SV', 'MLI'=> 'ML', 'IRL'=> 'IE', 'IRN'=> 'IR', 'ABW'=> 'AW', 'PNG'=> 'PG', 'KNA'=> 'KN', 'PAN'=> 'PA', 'SDN'=> 'SD', 'SLB'=> 'SB', 'NZL'=> 'NZ', 'MCO'=> 'MC', 'ITA'=> 'IT', 'UZB'=> 'UZ', 'JPN'=> 'JP', 'KGZ'=> 'KG', 'UGA'=> 'UG', 'NCL'=> 'NC', 'ARE'=> 'AE', 'ARG'=> 'AR', 'SWE'=> 'SE', 'BHS'=> 'BS', 'BHR'=> 'BH', 'ARM'=> 'AM', 'NRU'=> 'NR', 'CUB'=> 'CU');
 
-$address=explode(',',$user->address_1);
+$street=explode(',',$user->address_1);            
+$street = array_slice(array_merge($street, array("","","")),0,3); 
+list($rua, $numero, $complemento) = $street;      
+
 $data = array (
     'primeiro_nome' => $user->first_name,
     'meio_nome'     => $user->middle_name,
@@ -29,8 +32,9 @@ $data = array (
     'email'         => $user->user_email,
     'documento'     => '',
     'tel_casa'      => array ('area' => $telefone_ddd, 'numero' => $telefone ),
-    'rua'           => $address[0],
-    'numero'        => $address[1],
+    'rua'           => $rua,
+    'numero'        => $numero,
+    'complemento'   => $complemento,
     'bairro'        => $user->address_2,
     'cidade'        => $user->city,
     'estado'        => $user->state,
